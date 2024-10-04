@@ -1,20 +1,67 @@
-.cell{
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+#gameContainer {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+#cellContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 75px);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cell {
     width: 75px;
     height: 75px;
-    border: 2px solid;
-    box-shadow: 0 0 0 2px;
-    line-height: 75px;
+    background-color: #f9f9f9;
+    border: 2px solid #ff0073;
     font-size: 50px;
-    cursor: pointer;
-}
-#gameContainer{
-    font-family:"Permanent Marker", cursive;
     text-align: center;
+    line-height: 75px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
+.cell:hover {
+    background-color: #ddd;
 }
-#cellContainer{
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    width: 225px;
-    margin: auto 
+
+#statusText {
+    margin-bottom: 20px;
+    font-size: 24px;
 }
+
+#restartBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff0073;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#restartBtn:hover {
+    background-color: #ff0073;
+}
+
