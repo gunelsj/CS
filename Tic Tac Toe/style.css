@@ -28,6 +28,7 @@ h1 {
     gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
+    position: relative; 
 }
 
 .cell {
@@ -62,6 +63,14 @@ h1 {
 }
 
 #restartBtn:hover {
-    background-color: #ff0073;
+    background-color: #ff0055;
 }
 
+#winningLine {
+    position: absolute;
+    width: 0;
+    height: 6px;
+    background-color: #ff0055;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}

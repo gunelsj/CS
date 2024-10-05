@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll(".cell");
 const statusText = document.getElementById("statusText");
 const restartBtn = document.getElementById("restartBtn");
+const winningLine = document.getElementById("winningLine");
 const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -59,6 +60,7 @@ function checkWinner() {
         }
         if (cellA === cellB && cellB === cellC) {
             roundWon = true;
+            showWinningLine(condition); 
             break;
         }
     }
@@ -74,10 +76,35 @@ function checkWinner() {
     }
 }
 
+function showWinningLine(winCondition) {
+    const firstCell = cells[winCondition[0]].getBoundingClientRect();
+    const lastCell = cells[winCondition[2]].getBoundingClientRect();
+
+    const cellContainer = document.getElementById("cellContainer").getBoundingClientRect();
+    
+    const lineX = (firstCell.left + lastCell.right) / 2 - cellContainer.left;
+    const lineY = (firstCell.top + lastCell.bottom) / 2 - cellContainer.top;
+    
+    const distance = Math.sqrt(Math.pow(lastCell.right - firstCell.left, 2) + Math.pow(lastCell.bottom - firstCell.top, 2));
+    
+    winningLine.style.width = `${distance}px`;
+    winningLine.style.top = `${lineY}px`;
+    winningLine.style.left = `${lineX - distance / 2}px`;
+    
+    if (winCondition[0] % 3 === winCondition[2] % 3) {
+        winningLine.style.transform = 'rotate(90deg)';
+    } else if (winCondition[0] === 0 && winCondition[2] === 8 || winCondition[0] === 2 && winCondition[2] === 6) {
+        winningLine.style.transform = 'rotate(45deg)';
+    } else {
+        winningLine.style.transform = 'rotate(0deg)';
+    }
+}
+
 function restartGame() {
     currentPlayer = "X";
     options = ["", "", "", "", "", "", "", "", ""];
     statusText.textContent = `Player ${currentPlayer}'s turn`;
     cells.forEach(cell => cell.textContent = "");
     running = true;
+    winningLine.style.width = '0';
 }
