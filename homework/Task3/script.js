@@ -150,7 +150,7 @@ console.log("sum2", sum2);
 //6) arrayda tekrar olunan reqemleri artan sira ile duzun
 let result2 = arr.filter((num, index, array) => array.indexOf(num) !== index) 
     .filter((num, index, array) => array.indexOf(num) === index); 
-    result2.sort((a, b) => a - b); 
+    result2.sort((a, b) => a - b)
 console.log("result2", result2)
 
 //7) arraydaki en boyuk reqemi tapin ve nece defe tekrarlandigini gosterin(Math.max)
@@ -660,4 +660,4 @@ function findKeys3(arr) {
         return acc;
     }, []);
 }
-console.log(findKeys3(arr2));
+console.log(findKeys3(arr2));A
